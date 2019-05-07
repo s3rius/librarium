@@ -1,1 +1,1 @@
-{"status":"done","publicPath":"http://0.0.0.0:8080/","chunks":{"app":[{"name":"app.js","publicPath":"http://0.0.0.0:8080/app.js","path":"/app/dist/app.js"},{"name":"app.be2349f81303d02bc837.hot-update.js","publicPath":"http://0.0.0.0:8080/app.be2349f81303d02bc837.hot-update.js","path":"/app/dist/app.be2349f81303d02bc837.hot-update.js"}]}}
+{"status":"done","publicPath":"http://0.0.0.0:8080/","chunks":{"app":[{"name":"app.js","publicPath":"http://0.0.0.0:8080/app.js","path":"/app/dist/app.js"}]}}
