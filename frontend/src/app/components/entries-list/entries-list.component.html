@@ -12,6 +12,11 @@
 </div>
 <div class="container">
   <div id="resources">
-    
+    <mat-grid-list cols="4" rowHeight="22em" rowHeight="1:1.4" gutterSize="40px">
+      <mat-grid-tile
+        *ngFor="let resource of resources">
+        <app-entry [resource]="resource"></app-entry>
+      </mat-grid-tile>
+    </mat-grid-list>
   </div>
 </div>

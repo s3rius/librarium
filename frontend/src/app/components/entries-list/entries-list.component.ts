@@ -1,6 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {LibServiceService} from '../../services/lib-service.service';
 import {Resource} from '../../models/resource';
+import {Globals} from '../../globals';
+
+export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+}
 
 @Component({
   selector: 'app-entries-list',
@@ -10,13 +18,17 @@ import {Resource} from '../../models/resource';
 export class EntriesListComponent implements OnInit {
   resources: [Resource];
 
-  constructor(private lib: LibServiceService) {
+  constructor(private lib: LibServiceService, private globals: Globals) {
+
   }
 
   ngOnInit() {
-    this.lib.getAllResources().subscribe(
+    this.lib.getAllResources(0, 32).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
+        for (let entry in data.values()) {
+          console.log(entry);
+        }
         this.resources = data;
       },
       err => {

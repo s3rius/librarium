@@ -1,8 +1,6 @@
 <!--Navbar-->
 <mdb-navbar
-  class="transparent-login"
-  SideClass="navbar navbar-expand-lg navbar-dark fixed-top
-    {{ this.auth.loggedIN ? 'cyan': ''}}" [containerInside]="false">
+  SideClass="navbar navbar-expand-lg navbar-dark fixed-top primary-gradient" [containerInside]="false">
 
   <!-- Navbar brand -->
   <mdb-navbar-brand><a class="navbar-brand" routerLink="/">
@@ -45,6 +43,6 @@
 
 </mdb-navbar>
 <!--/.Navbar-->
-<section class="content {{ this.auth.loggedIN ? 'paged' : '' }}">
+<section class="content paged">
   <router-outlet></router-outlet>
 </section>

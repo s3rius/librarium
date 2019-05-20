@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Resource} from '../../models/resource';
+import {Globals} from '../../globals';
 
 @Component({
   selector: 'app-entry',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./entry.component.scss']
 })
 export class EntryComponent implements OnInit {
+  @Input()
+  resource: Resource;
+  link: string;
 
-  constructor() { }
+  constructor(private globals: Globals) {
+  }
 
   ngOnInit() {
+    this.link = `${this.globals.baseAddress}/content/${this.resource.id}/preview`;
   }
 
 }

@@ -72,8 +72,8 @@ class PreviewView(JSONWebTokenAuthMixin, View):
 
 class AllResourcesView(JSONWebTokenAuthMixin, View):
     def get(self, request):
-        count = request.GET.get("count", 50)
-        offset = request.GET.get("offset", 0)
+        count = int(request.GET.get("count", 50))
+        offset = int(request.GET.get("offset", 0))
         entries = Resources.objects.all().order_by("-likes")[offset:(offset + count):1]
         serializer = ResourcesSerializer(entries, many=True)
         return JsonResponse(serializer.data, safe=False)

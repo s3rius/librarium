@@ -1,4 +1,4 @@
-<section class="view login-main">
+<section class="view primary-gradient">
   <div class="full-bg-img mask rgba-gradient">
     <div class="container flex-center">
       <div class="d-flex align-items-center content-height w-100">
@@ -35,23 +35,34 @@
                     'white-text': !this.auth.loginError
                     }"></i>
                   <input type="text" name="username" id="formLogin" class="form-control" [(ngModel)]="user.username"
-                         mdbInput required>
+                         maxlength="20"
+                         mdbInput
+                         required>
                   <label for="formLogin">Username</label>
                 </div>
 
                 <div class="md-form">
-                  <i class="fas fa-lock prefix" [ngClass]="{
+                  <mdb-icon fas icon="lock" [ngClass]="{
                     'red-text': this.auth.loginError,
                     'white-text': !this.auth.loginError
-                    }"></i>
-                  <input type="password" name="pass" id="formPass" class="form-control" [(ngModel)]="user.password"
-                         mdbInput required>
+                    }"></mdb-icon>
+                  <input type="password" name="pass" id="formPass" class="form-control"
+                    [(ngModel)]="user.password"
+                         mdbInput
+                         maxlength="30"
+                         required>
                   <label for="formPass">Password</label>
                 </div>
 
                 <div class="text-center">
-                  <input mdbBtn type="submit" color="white" outline="true" class="waves-light" mdbWavesEffect
-                         value="Log in">
+                  <input *ngIf="!this.auth.loading" mdbBtn type="submit" color="white" outline="true" maxlength="30"
+                                                    class="waves-light"
+                                                    mdbWavesEffect
+                                                    value="Log in">
+                  <div *ngIf="this.auth.loading" class="flex-center" style="max-height: 45px">
+                    <mat-spinner></mat-spinner>
+                  </div>
+                  <hr class="hr-light mb-3 mt-4">
 
                   <div class="inline-ul text-center d-flex justify-content-center">
                     <a class="icons-sm ins-ic px-4">

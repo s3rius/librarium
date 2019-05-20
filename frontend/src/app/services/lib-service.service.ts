@@ -1,22 +1,24 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {Observable} from 'rxjs';
 import {Resource} from '../models/resource';
+import {Globals} from '../globals';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LibServiceService {
 
-  baseUrl = 'http://localhost:8000';
 
-  constructor(private client: HttpClient, private auth: AuthService) {
+  constructor(private client: HttpClient, private auth: AuthService, private globals: Globals) {
   }
 
-  public getAllResources(): Observable<[Resource]> {
+  public getAllResources(offset, count): Observable<[Resource]> {
     const headers = this.auth.authHeaders();
-    return this.client.get<[any]>(`${this.baseUrl}/resources`, {headers: headers});
+    let params = new HttpParams().append('count', count.toString()).append('offset', offset.toString());
+    console.log(params);
+    return this.client.get<[any]>(`${this.globals.baseAddress}/resources`, {headers, params});
   }
 
 }
