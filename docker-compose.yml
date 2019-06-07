@@ -1,0 +1,46 @@
+version: "3.7"
+
+services:
+  app:
+    build: "."
+    expose:
+      - "8000"
+    ports:
+      - 8000:8000
+    links:
+      - db
+      - frontend
+    volumes:
+      - .:/app
+    environment:
+      POSTGRES_PASSWORD: 19977991
+    depends_on:
+      - db
+      - frontend
+    working_dir: /app
+    tty: true
+    command: ["./wait-for-postgre.sh", "db", "./startup.sh"]
+  adminer:
+    image: adminer
+    ports:
+      - 9090:8080
+    restart: always
+  db:
+    environment:
+      POSTGRES_DB: lib
+      POSTGRES_PASSWORD: 19977991
+    image: postgres
+    ports:
+      - 5432:5432
+    restart: always
+  frontend:
+    command: ./serve.sh
+    expose:
+      - 8080
+    image: node:12.1.0-alpine
+    ports:
+      - 8080:8080
+    tty: true
+    volumes:
+      - ./frontend/:/app
+    working_dir: /app
