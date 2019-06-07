@@ -1,4 +1,7 @@
-<img  [attr.src]="this.link | secure | async" class="image-entry">
+<div  *ngIf="loading">
+  <img src="/assets/book-thumbnail.png" alt="loading..." class="image-entry"/>
+</div>
+<img  [hidden]="loading" (load)="onLoad()" [attr.src]="this.link | secure | async" class="image-entry">
 <mat-grid-tile-footer>
   {{ this.resource.name }}
 </mat-grid-tile-footer>

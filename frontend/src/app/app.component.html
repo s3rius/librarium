@@ -24,18 +24,18 @@
           Bundles
         </a>
       </li>
-
-      <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown *ngIf="this.auth.loggedIN">
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+      <li class="nav-item" *ngIf="this.auth.loggedIN">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/profile">
           <mdb-icon fas icon="user"></mdb-icon>
-          Profile<span class="caret"></span></a>
-        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/profile">My account</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/logout">Log out</a>
-        </div>
+          Profile
+        </a>
       </li>
-
+      <li class="nav-item" *ngIf="this.auth.loggedIN">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/logout">
+          <mdb-icon fas icon="sign-out-alt"></mdb-icon>
+          Log out
+        </a>
+      </li>
     </ul>
     <!-- Links -->
   </links>

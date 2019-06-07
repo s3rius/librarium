@@ -11,6 +11,7 @@ export class EntryComponent implements OnInit {
   @Input()
   resource: Resource;
   link: string;
+  loading: boolean = true;
 
   constructor(private globals: Globals) {
   }
@@ -19,4 +20,7 @@ export class EntryComponent implements OnInit {
     this.link = `${this.globals.baseAddress}/content/${this.resource.id}/preview`;
   }
 
+  onLoad() {
+    this.loading = false;
+  }
 }
